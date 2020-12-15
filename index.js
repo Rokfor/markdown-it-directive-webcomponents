@@ -128,7 +128,7 @@ function blockHandler(
     }
   }
 
-  let token = state.push('component_open', tag, 1);
+  let token = state.push('component_'+tag+'_open', tag, 1);
   token.map = [ directiveStartLine, directiveEndLine ];
   token.attrs = getTokenAttrs(attrs, dests, false, compiledAllowedAttrs, destLinkName, destStringName);
   if (parseInner) {
@@ -150,7 +150,7 @@ function blockHandler(
     token = state.push('text', '', 0);
     token.content = unescapeAll(content);
   }
-  token = state.push('component_close', tag, -1);
+  token = state.push('component_'+tag+'_close', tag, -1);
 }
 
 const DIRECTIVE_NAME_RE = /^[a-z][a-z0-9\-_]*/i; // copy from markdown-directive
