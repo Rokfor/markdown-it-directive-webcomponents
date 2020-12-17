@@ -93,7 +93,7 @@ function inlineHandler(
 ) {
   content = content || '';
 
-  let token = state.push('component_open', tag, 1);
+  let token = state.push(tag + '_open', tag, 1);
   token.attrs = getTokenAttrs(attrs, dests, true, compiledAllowedAttrs, destLinkName, destStringName);
   if (parseInner) {
     const oldMax = state.posMax;
@@ -107,7 +107,7 @@ function inlineHandler(
     token = state.push('text', '', 0);
     token.content = unescapeAll(content);
   }
-  token = state.push('component_close', tag, -1);
+  token = state.push(tag + '_close', tag, -1);
 }
 
 function blockHandler(
